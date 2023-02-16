@@ -1,0 +1,19 @@
+#!/bin/bash -l
+
+echo "r $@"
+
+apt-get update -qq
+
+apt-get install --no-install-recommends software-properties-common dirmngr --assume-yes &> /dev/null
+
+wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc >> /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+# wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+
+add-apt-repository -y "deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/" &> /dev/null
+add-apt-repository -y ppa:c2d4u.team/c2d4u4.0+ &> /dev/null
+
+# cat /etc/apt/sources.list
+
+apt-get install --no-install-recommends r-base --assume-yes &> /dev/null
+
+

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+DEBIAN_FRONTEND=interactive
+
+sudo apt install git=1:2.25.1-1ubuntu3.8 &> /dev/null
+
+cp /srv/host/vm/secrets/.ssh/id_rsa /home/vagrant/.ssh/id_rsa_github
+cp /srv/host/vm/secrets/.ssh/config /home/vagrant/.ssh/
+
+chmod 600 /home/vagrant/.ssh/id_rsa_github
+
+ssh-keyscan github.com >> .ssh/known_hosts
+
+cp -r /srv/host/vm/secrets/.gitconfig /home/vagrant/.gitconfig
+
+# Clone the repository
+git -C /home/vagrant/repo/ pull
+
+
