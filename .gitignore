@@ -1,0 +1,4 @@
+vm/secrets/
+vm/.vagrant/
+cache/*
+
