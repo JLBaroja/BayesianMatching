@@ -11,4 +11,4 @@ apt-get install -qq \
     g++=4:9.3.0-1ubuntu2 # &> /dev/null
 
 
-su - -c "R -e \"install.packages(c('R2jags'), dep=T, repos='http://cran.rstudio.com/')\"" #&> /dev/null
+su - -c "R -e \"install.packages(c('R2jags', 'truncnorm'), dep=T, repos='http://cran.rstudio.com/')\"" &> /dev/null
