@@ -1,0 +1,11 @@
+#!/bin/bash
+
+DEBIAN_FRONTEND=interactive
+
+mkdir /home/vagrant/repo
+cd /home/vagrant/repo
+
+git clone git@github.com:JLBaroja/BayesianMatching.git
+git clone git@github.com:JLBaroja/TestingBayesianCode.git
+
+
