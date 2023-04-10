@@ -1,6 +1,8 @@
 ---
 title: Matching pigeons
-output: html_document
+output:
+  md_document:
+    variant: markdown_github
 knit: (function(input, ...) {
     rmarkdown::render(
       input,
