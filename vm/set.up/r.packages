@@ -2,15 +2,13 @@
 
 echo "r.packages $@"
 
-apt-get install --assume-yes \
-    r-cran-tidyverse \
-    r-cran-brms \
-    r-cran-lme4 \
-    &> /dev/null
+apt-get install -qq \
+    r-cran-rjags \
+    jags \
+    libssl-dev \
+    make=4.2.1-1.2 \
+    gcc=4:9.3.0-1ubuntu2 \
+    g++=4:9.3.0-1ubuntu2 # &> /dev/null
 
-#apt-get install r-cran-readr r-cran-corrplot \
-#    r-cran-data.table r-cran-rmarkdown r-cran-rjags \
-#    r-cran-r.utils r-cran-xfun r-cran-car \
-#    r-cran-nloptr r-cran-pbkrtest --assume-yes &> /dev/null
 
-su - -c "R -e \"install.packages(c('Rmisc', 'truncnorm'), repos='http://cran.rstudio.com/')\"" &> /dev/null
+su - -c "R -e \"install.packages(c('R2jags', 'truncnorm'), dep=T, repos='http://cran.rstudio.com/')\"" &> /dev/null
