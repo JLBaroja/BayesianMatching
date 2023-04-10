@@ -39,7 +39,7 @@ for(bb in unique(data$pigeons$bird)){
 }
 ```
 
-![](/home/vagrant/repo/BayesianMatching/output/pigeons_files/figure-markdown_github/unnamed-chunk-2-1.png)
+![](./pigeons_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
 ``` r
 priors <- list(mean_alpha = 0.0,
@@ -168,7 +168,7 @@ plot_marginal('alpha', nds)
 plot_marginal('beta', nds)
 ```
 
-![](/home/vagrant/repo/BayesianMatching/output/pigeons_files/figure-markdown_github/unnamed-chunk-6-1.png)
+![](./pigeons_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 ``` r
 layout(matrix(1:2,nrow=1))
@@ -184,4 +184,4 @@ plot_marginal <- function(){
 plot_marginal()
 ```
 
-![](/home/vagrant/repo/BayesianMatching/output/pigeons_files/figure-markdown_github/unnamed-chunk-7-1.png)
+![](./pigeons_files/figure-markdown_github/unnamed-chunk-7-1.png)
