@@ -1,4 +1,4 @@
 vm/.secrets/
 vm/.vagrant/
 cache/*
-
+.ipynb_checkpoints/

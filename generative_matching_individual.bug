@@ -1,18 +1,22 @@
 model{
 
-        for(b in 1:n_birds) {
-            alpha[b] ~ dnorm(mean_alpha_prior, pow(sd_alpha_prior, -2))T(-2,2)
-            beta[b]  ~ dnorm(mean_beta_prior , pow(sd_beta_prior , -2))T(-2,2)
-            tau[b]   ~ dgamma(shape_tau_prior, rate_tau_prior)T(0.01,)
-        }
-    
-        for(i in 1:n_obs) {
-            lambda_Br[i] ~ dlnorm( alpha[birds[i]]/2 + beta[birds[i]] * log(Wr[i])/2, tau[birds[i]])
-            lambda_Bl[i] ~ dlnorm(-alpha[birds[i]]/2 - beta[birds[i]] * log(Wl[i])/2, tau[birds[i]])
-            Br[i] ~ dpois(lambda_Br[i])
-            Bl[i] ~ dpois(lambda_Bl[i])
-            Br_post[i] ~ dpois(lambda_Br[i])
-            Bl_post[i] ~ dpois(lambda_Bl[i])
-        }
+    for(b in 1:n_birds){
+         alpha[b] ~ dnorm(mean_alpha_prior, pow(sd_alpha_prior, -2))T(-2,2)
+         beta[b]  ~ dnorm(mean_beta_prior , pow(sd_beta_prior , -2))T(-2,2)
+         tau[b]   ~ dgamma(shape_tau_prior, rate_tau_prior)T(0.01,)
+    }
+
+    for(i in 1:n_obs){
+             lambda_Br[i] ~ dlnorm( alpha[birds[i]]/2 + beta[birds[i]] * log(Wr[i])/2, tau[birds[i]])
+             lambda_Bl[i] ~ dlnorm(-alpha[birds[i]]/2 - beta[birds[i]] * log(Wl[i])/2, tau[birds[i]])
+             Br[i] ~ dpois(lambda_Br[i])
+             Bl[i] ~ dpois(lambda_Bl[i])
+    # Posterior predictive
+             Br_post[i] ~ dpois(lambda_Br[i])
+             Bl_post[i] ~ dpois(lambda_Bl[i])
+             #Br_post[i,birds[i]] ~ dpois(lambda_Br[i])
+             #Bl_post[i,birds[i]] ~ dpois(lambda_Bl[i])
+           #  log_B_post[i] <- log(Br_post[i,birds[i]]/Bl_post[i,birsd[i]])
+         }
 
     }
